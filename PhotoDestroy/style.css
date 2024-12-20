@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+/**************alpha******************/
+.alpha_container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  box-shadow: inset 0px 0px 15px #000;
+}
+#canvas1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  overflow: visible;
+  border: 1px solid black;
+}
+
+#projectImage {
+  display: none;
+}
+/**************beta******************/
+.beta_container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+/**************SVG******************/
+.line-drawing {
+  border: 1px solid red;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+svg {
+  margin-top: 26vh;
+  margin-left: 11.5vw;
+  height: 62.8vh;
+  width: 99%;
+}
+path {
+  color: #fff;
+}
+/**********************SVG FIN******************/

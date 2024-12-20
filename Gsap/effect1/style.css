@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #444;
+}
+.mainContaine {
+  display: block;
+}
+#cubeContainer {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  height: 25vh;
+  width: 55vw;
+  overflow: hidden;
+  border-radius: 10px;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+strong {
+  left: 40%;
+  position: absolute;
+  color: #fff;
+  font-size: 7rem;
+  z-index: 99;
+  mix-blend-mode: difference;
+  letter-spacing: 1rem;
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.cube {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5px;
+  padding: 0;
+  height: 9vh;
+  width: 9vh;
+  border-radius: 10px;
+  background-color: #fff;
+  opacity: 0.7;
+  mix-blend-mode: difference;
+}
+strong:hover {
+  transition: 0.3s ease;
+  filter: drop-shadow(0px 0px 8px#000);
+}
