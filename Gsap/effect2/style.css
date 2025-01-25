@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Bebas Neue", serif;
   font-weight: 400;
@@ -18,16 +19,21 @@ body {
   display: flex;
   flex-wrap: nowrap;
 }
-header {
-  font-size: 8rem;
+.logo {
+  font-size: 7rem;
   position: fixed;
   z-index: 10;
-  top: 15%;
+  top: 31%;
   left: 4rem;
   line-height: 0.9;
+  mix-blend-mode: overlay;
+  filter: drop-shadow(0px 0px 5px #000);
+}
+.logo > h1 {
+  letter-spacing: 55px;
 }
 .line {
-  background-color: red;
+  background-color: #000;
   height: 1rem;
   position: absolute;
   top: 50%;
@@ -62,7 +68,7 @@ section.character::before {
 }
 .slideA::before,
 .slideA .block {
-  background-color: #f52b2b;
+  background-color: #444;
 }
 .slideB::before,
 .slideB .block {
@@ -89,18 +95,21 @@ section.character::before {
   height: 90vh;
   width: auto;
   transform: translateY(-100%);
+  filter: drop-shadow(0px 0px 5px #000);
 }
 .hugtext {
   font-size: 25rem;
   width: 100%;
   text-align: center;
-  color: #f52b2b;
   position: absolute;
   top: 20%;
   left: 0;
   transform: translateY(100%);
   font-weight: 700;
-  mix-blend-mode: difference;
+  background: #000 url("image/peakpx.jpg") no-repeat 34% 50%;
+  background-size: 15%;
+  color: transparent;
+  background-clip: text;
 }
 .nickname {
   position: absolute;

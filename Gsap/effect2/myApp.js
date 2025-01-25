@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Logo animation
-  gsap.to(".logo", {
+  gsap.to(".logo,h1", {
     fontSize: "2.5rem",
+    letterSpacing: "5px",
     top: "4rem",
     scrollTrigger: {
       trigger: ".logo",
@@ -139,3 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+//script pour la compatibilité avec GSAP
+const lenis = new Lenis();
+
+lenis.on("scroll", ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 500);
+});
+
+gsap.ticker.lagSmoothing(0);
