@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 canvas.width = 1200;
-canvas.height = 600;
+canvas.height = 800;
 
 class Cell {
   constructor(effect, x, y, index) {
@@ -10,7 +10,7 @@ class Cell {
     this.y = y;
     this.index = index;
     //change la position de départ de l'animation
-    this.positionX = Math.random() * this.effect.width;
+    this.positionX = this.effect.width * 0.5;
     this.positionY = this.effect.height;
     this.speedX;
     this.speedY;
@@ -22,7 +22,7 @@ class Cell {
     this.vx = 0;
     this.vy = 0;
     //change les effet de profondeur
-    this.ease = 0.1;
+    this.ease = 0.01;
     this.friction = 0.9;
     this.randomize = Math.random() * 50 + 2;
     setTimeout(() => {
@@ -41,7 +41,7 @@ class Cell {
       this.width,
       this.height
     );
-    //context.strokeRect(this.positionX, this.positionY, this.width, this.height);
+    context.strokeRect(this.positionX, this.positionY, this.width, this.height);
   }
 
   start() {
@@ -51,12 +51,12 @@ class Cell {
 
   update() {
     //cell position
-    //if (Math.abs(this.speedX) > 0.01 || Math.abs(this.speedY > 0.1)) {
-    this.speedX = (this.x - this.positionX) / this.randomize;
-    this.speedY = (this.y - this.positionY) / this.randomize;
-    this.positionX += this.speedX;
-    this.positionY += this.speedY;
-    //}
+    if (Math.abs(this.speedX) > 0.01 || Math.abs(this.speedY > 0.1)) {
+      this.speedX = (this.x - this.positionX) / this.randomize;
+      this.speedY = (this.y - this.positionY) / this.randomize;
+      this.positionX += this.speedX;
+      this.positionY += this.speedY;
+    }
 
     //crop
     const dx = this.effect.mouse.x - this.x;
@@ -87,7 +87,7 @@ class Effect {
     this.mouse = {
       x: undefined,
       y: undefined,
-      radius: 250,
+      radius: 150,
     };
     this.canvas.addEventListener("mousemove", (e) => {
       this.mouse.x = e.offsetX;
