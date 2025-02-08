@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
-canvas.width = 1200;
-canvas.height = 800;
+canvas.width = 1600;
+canvas.height = 900;
 
 class Cell {
   constructor(effect, x, y, index) {
@@ -22,9 +22,9 @@ class Cell {
     this.vx = 0;
     this.vy = 0;
     //change les effet de profondeur
-    this.ease = 0.01;
+    this.ease = 0.1;
     this.friction = 0.9;
-    this.randomize = Math.random() * 50 + 2;
+    this.randomize = Math.random() * 50 + 5;
     setTimeout(() => {
       this.start();
     }, this.index * 10);
@@ -41,7 +41,7 @@ class Cell {
       this.width,
       this.height
     );
-    context.strokeRect(this.positionX, this.positionY, this.width, this.height);
+    // context.strokeRect(this.positionX, this.positionY, this.width, this.height);
   }
 
   start() {
@@ -51,12 +51,12 @@ class Cell {
 
   update() {
     //cell position
-    if (Math.abs(this.speedX) > 0.01 || Math.abs(this.speedY > 0.1)) {
-      this.speedX = (this.x - this.positionX) / this.randomize;
-      this.speedY = (this.y - this.positionY) / this.randomize;
-      this.positionX += this.speedX;
-      this.positionY += this.speedY;
-    }
+    // if (Math.abs(this.speedX) > 0.01 || Math.abs(this.speedY > 0.1)) {
+    this.speedX = (this.x - this.positionX) / this.randomize;
+    this.speedY = (this.y - this.positionY) / this.randomize;
+    this.positionX += this.speedX;
+    this.positionY += this.speedY;
+    // }
 
     //crop
     const dx = this.effect.mouse.x - this.x;
@@ -65,12 +65,14 @@ class Cell {
     if (distance < this.effect.mouse.radius) {
       const angle = Math.atan2(dy, dx);
       const force = distance / this.effect.mouse.radius;
-      this.vx = force * Math.cos(angle);
-      this.vy = force * Math.sin(angle);
+      this.vx = force * Math.sin(angle);
+      this.vy = force * Math.cos(angle);
     }
     //si on change les opérateur Mathématique cela change les effet de disloquance
-    this.slideX += (this.vx *= this.friction) + this.slideX * this.ease;
-    this.slideY += (this.vy *= this.friction) + this.slideY * this.ease;
+    this.slideX += (this.vx *= this.friction) - this.slideX * this.ease;
+    this.slideY += (this.vy *= this.friction) - this.slideY * this.ease;
+    // this.slideX += this.vx - this.slideX * this.ease;
+    // this.slideY += this.vy - this.slideY * this.ease;
   }
 }
 
@@ -80,20 +82,20 @@ class Effect {
     this.width = this.canvas.width;
     this.height = this.canvas.height;
     this.cellWidht = this.width / 25;
-    this.cellHeight = this.height / 35;
+    this.cellHeight = this.height / 15;
     this.cell = new Cell(this, 0, 0);
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {
       x: undefined,
       y: undefined,
-      radius: 150,
+      radius: 300,
     };
     this.canvas.addEventListener("mousemove", (e) => {
       this.mouse.x = e.offsetX;
       this.mouse.y = e.offsetY;
     });
-    this.canvas.addEventListener("mouseleave", (e) => {
+    this.canvas.addEventListener("mouseleav", (e) => {
       this.mouse.x = undefined;
       this.mouse.y = undefined;
     });
