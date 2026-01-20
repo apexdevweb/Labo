@@ -21,7 +21,7 @@ gsap.set(outerWrappers, { yPercent: 100 });
 gsap.set(innerWrappers, { yPercent: -100 });
 
 function gotoSection(index, direction) {
-  index = wrap(index); // make sure it's valid
+  index = wrap(index); // on regarde qu'il est qu'il est valide
   animating = true;
   let fromTop = direction === -1,
     dFactor = fromTop ? -1 : 1,
@@ -30,7 +30,7 @@ function gotoSection(index, direction) {
       onComplete: () => (animating = false),
     });
   if (currentIndex >= 0) {
-    // The first time this function runs, current is -1
+    // La première fois que cette fonction s'exécute, l'actuel est -1
     gsap.set(sections[currentIndex], { zIndex: 0 });
     tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
       sections[currentIndex],
