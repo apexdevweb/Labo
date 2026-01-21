@@ -73,12 +73,46 @@ section {
   will-change: transform;
 }
 .spotlight-bg {
+  top: 0;
   position: absolute;
   transform: scale(0.8);
-  opacity: 0.25;
+  /* opacity: 0.25; */
+  background: #fff url("../image/graff.png") no-repeat 50% 55%;
+  background-size: contain;
+  border-radius: 15px;
+  animation: featHover 2s linear infinite;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+video {
+  height: auto;
+  width: auto;
+  opacity: 0.6;
+  border-radius: 15px;
+  animation: featHoverIA 5s linear infinite;
 }
 .spotlight-content h2 {
+  margin-top: 15vh;
   width: 100%;
+  font-family: var(--font-family-fmlA);
+  color: #0f0f0f;
+  letter-spacing: 0;
+  font-size: 8rem;
+  width: 3ex;
+  text-align: left;
+  font-weight: 700;
+}
+small {
+  width: 100%;
+  font-family: var(--font-family-fmlB);
+  color: #0f0f0f;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  text-align: left;
+  font-weight: 700;
+  text-align: center;
 }
 .header-content {
   width: 100%;
@@ -106,14 +140,18 @@ section {
   transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
-  background-color: #777;
-  border: 0.125rem solid #fff;
+  border: 0.165rem solid #fff;
   border-radius: 0.5rem;
+  background-color: #777;
   will-change: width, height, border-radius, border-width;
+  overflow: hidden;
 }
 .feature-content {
   position: relative;
   will-change: opacity;
+}
+.feature:hover {
+  animation: featHover 2s linear infinite;
 }
 .feature-content p {
   text-transform: uppercase;
@@ -126,7 +164,7 @@ section {
 
 .search-bar {
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 3rem;
@@ -147,4 +185,44 @@ section {
   opacity: 0.25;
   width: auto;
   text-align: center;
+}
+@keyframes featHover {
+  0% {
+    box-shadow: 0 6px 12px #f4320b;
+  }
+  25% {
+    box-shadow: 6px 0 12px #ff2ed2;
+  }
+  50% {
+    box-shadow: 0 -6px 12px #f5cf27;
+  }
+  75% {
+    box-shadow: -6px 0 12px #2effab;
+  }
+  100% {
+    box-shadow: 0 6px 12px #63c6f8;
+  }
+}
+@keyframes featHoverIA {
+  0% {
+   background-color: #0f0f0f;
+  }
+  25% {
+    mix-blend-mode: difference;
+  }
+  50% {
+    mix-blend-mode: exclusion;
+  }
+  75% {
+    mix-blend-mode: darken;
+  }
+  100% {
+   mix-blend-mode: saturation;
+  }
+}
+.transition__add__js {
+  transition: color 0.4s ease-out;
+}
+.transitionBg__add__js {
+  transition: background-color 0.4s ease-out;
 }

@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".spotlight",
     start: "top",       
-    end: `+=${window.innerHeight * 1.4}px`,           
+    end: `+=${window.innerHeight * 1.3}px`,           
     pin: true,
     pinSpacing: true,
-    scrub: 0.9,                     
+    scrub: 0.8,                     
     markers: true,
     onUpdate: (self) => {
       const progress = self.progress;
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.set(".search-bar", {
           width: `${width}rem`,
           height: `${height}rem`,
-          transform: `translate(-50%, ${translateY}%)`, // ✅ corrigé
+          transform: `translate(-50%, ${translateY}%)`,
         });
 
         gsap.set(".search-bar img", { opacity: 0 });
